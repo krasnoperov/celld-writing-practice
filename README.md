@@ -2,11 +2,11 @@
 
 Writing Practice is a persistent writing desk with an agentic coach. The coach researches a subject, leaves cited reading notes, responds to drafts, and marks exact passages without writing the piece for its author.
 
-The application is also a compact example of running Durable Objects on infrastructure you control with [`celld`](https://github.com/denoland/celld). The public essay, two films, and an application walkthrough are at [krasnoperov.me](https://krasnoperov.me/posts/two-films-about-durable-objects).
+The application is also a compact example of running Durable Objects with [`celld`](https://github.com/denoland/celld). The [Durable Objects essay and two films](https://krasnoperov.me/posts/two-films-about-durable-objects) explain the model; the [Writing Practice walkthrough](https://krasnoperov.me/posts/writing-practice-on-celld) shows it in use.
 
 This repository is source-available for inspection and discussion. It is not open source; see [LICENSE](LICENSE).
 
-The deployment on Hetzner is a controlled experiment, not a public trial. The Writing Practice video in that article is the public walkthrough.
+The deployment on Hetzner is a controlled experiment, not a public trial. The Writing Practice video is the public walkthrough.
 
 ## What the experiment shows
 
