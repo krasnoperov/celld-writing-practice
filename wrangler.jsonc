@@ -1,0 +1,32 @@
+{
+  "name": "writing-practice",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-08-06",
+  "durable_objects": {
+    "bindings": [
+      { "name": "COACHES", "class_name": "WritingCoach" },
+      { "name": "LIBRARIES", "class_name": "WritingLibrary" },
+      { "name": "ACCOUNTS", "class_name": "WritingAccount" },
+      { "name": "BILLING_ADMIN", "class_name": "BillingAdmin" }
+    ]
+  },
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["WritingCoach"] },
+    { "tag": "v2", "new_sqlite_classes": ["WritingLibrary"] },
+    { "tag": "v3", "new_sqlite_classes": ["WritingAccount", "BillingAdmin"] }
+  ],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/auth/*", "/desk", "/desk/*", "/privacy", "/pricing", "/admin"]
+  },
+  "vars": {
+    "COACH_PROVIDER": "demo",
+    "OPENAI_MODEL": "gpt-5.6-sol",
+    "BASE_PATH": "/",
+    "PUBLIC_BASE_URL": "https://writing.krasnoperov.me/",
+    "ADMIN_GITHUB_IDS": "",
+    "MONTHLY_AGENT_RUNS": "50",
+    "PLAN_NAME": "Writing Practice monthly"
+  }
+}

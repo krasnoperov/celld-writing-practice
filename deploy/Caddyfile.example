@@ -1,0 +1,29 @@
+writing.example.com {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://avatars.githubusercontent.com; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+	}
+
+	@entry_document path / /index.html /desk /desk/* /privacy /pricing /admin
+	handle @entry_document {
+		reverse_proxy 127.0.0.1:8931 {
+			header_down Cache-Control "no-cache, no-store, must-revalidate"
+		}
+	}
+
+	@fingerprinted_assets path /assets/*
+	handle @fingerprinted_assets {
+		reverse_proxy 127.0.0.1:8931 {
+			header_down Cache-Control "public, max-age=31536000, immutable"
+		}
+	}
+
+	handle {
+		reverse_proxy 127.0.0.1:8931
+	}
+}

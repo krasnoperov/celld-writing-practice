@@ -1,0 +1,19 @@
+# Writing Practice
+
+> A writing coach that researches a subject and responds to drafts without writing the piece for its author. Every piece has its own persistent celld Durable Object containing the page, brief, note stream, and background work.
+
+Writing Practice uses GitHub for identity, Polar for subscription billing, and OpenAI for live research and coaching. A deterministic local provider exercises the workflow without model credentials. The source is published for inspection under an all-rights-reserved license.
+
+## Pages
+
+- [Home](https://writing.krasnoperov.me/): sign in and write
+- [Pricing](https://writing.krasnoperov.me/pricing): the plan and session allowance
+- [Privacy](https://writing.krasnoperov.me/privacy): stored data, processors, and deletion
+
+## Design principles
+
+- One named Durable Object per piece; one account object per writer.
+- The writer authors every word. There is no automatic apply or rewrite control.
+- Model work starts only when the writer starts a piece or explicitly requests a coach pass; typing and saving never call the model.
+- Prompt contracts live in source and provider conversation state is never authoritative.
+- Margin notes are accepted only when their quoted anchors occur in the submitted draft.

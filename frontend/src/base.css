@@ -1,0 +1,75 @@
+/* Global primitives shared across pages (including the static video page):
+   reset, typography, header, buttons, forms, rendered-markdown, selection
+   grammar. Structural styles live in scoped component styles. */
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { background: var(--color-canvas); }
+body { margin: var(--space-0); color: var(--color-text); background: var(--color-canvas); font-family: var(--font-sans); }
+button, input, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible { outline: var(--border-accent) solid var(--color-focus); outline-offset: var(--space-1); }
+h1, h2, h3 { font-family: var(--font-serif); font-weight: 500; }
+
+/* Two hands, two inks: the writer's selection is graphite; when the app
+   selects on the coach's behalf, the coach-hand class turns the ink indigo. */
+::selection { background: var(--color-writer-selection); }
+.coach-hand ::selection, .coach-hand::selection { background: var(--color-coach-selection); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+.page-shell { width: min(var(--size-page), 100%); min-height: 100vh; margin: var(--space-0) auto; }
+.site-header { display: flex; align-items: center; justify-content: space-between; min-height: 4.75rem; padding: var(--space-3) var(--space-8); border-bottom: var(--border-thin) solid var(--color-border); }
+.brand { display: flex; align-items: center; gap: var(--space-3); color: var(--color-text); text-decoration: none; }
+.brand-mark { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: var(--radius-xs); color: var(--color-surface-raised); background: var(--color-action); font: 600 1.125rem/1 var(--font-serif); }
+.brand strong { font-size: 1rem; }
+main { padding: var(--space-8); }
+
+.primary-button, .secondary-button, .text-button { border: var(--space-0); cursor: pointer; }
+.primary-button { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-3) var(--space-5); border-radius: var(--radius-xs); color: var(--color-surface-raised); background: var(--color-action); box-shadow: var(--shadow-soft); font-weight: 750; text-decoration: none; }
+.primary-button:hover { background: var(--color-action-hover); }
+.primary-button:disabled { cursor: not-allowed; color: var(--color-text-subtle); background: var(--color-border); box-shadow: none; }
+.primary-button svg { width: 1.25rem; height: 1.25rem; }
+.secondary-button { display: inline-flex; align-items: center; padding: var(--space-2) var(--space-4); border: var(--border-thin) solid var(--color-action); border-radius: var(--radius-xs); color: var(--color-action); background: transparent; font-weight: 750; text-decoration: none; }
+.secondary-button:hover { background: var(--color-action-soft); }
+.secondary-button:disabled { cursor: not-allowed; border-color: var(--color-border); color: var(--color-text-subtle); }
+.text-button { padding: var(--space-1); color: var(--color-text-muted); background: transparent; font-size: 1rem; text-decoration: underline; text-underline-offset: var(--space-1); }
+.text-button:hover { color: var(--color-text); }
+
+label { display: block; margin-bottom: var(--space-5); color: var(--color-text-muted); font-size: 1rem; font-weight: 700; }
+input, textarea { width: 100%; border: var(--border-thin) solid var(--color-border); border-radius: var(--radius-xs); color: var(--color-text); background: var(--color-surface-raised); line-height: var(--leading-body); }
+input { margin-top: var(--space-2); padding: var(--space-3); }
+textarea { margin-top: var(--space-2); padding: var(--space-4); resize: vertical; }
+input:focus, textarea:focus { border-color: var(--color-action); }
+
+.library-empty, .app-status { color: var(--color-text-muted); font-size: 1rem; line-height: 1.55; }
+
+/* The coach's presence: a still dot when settled, a slow pulse while working. */
+.presence-dot { display: inline-block; flex: 0 0 auto; width: var(--space-2); height: var(--space-2); border-radius: var(--radius-round); background: var(--color-action); }
+.presence-dot.running { animation: presence-pulse 1.8s ease-in-out infinite; }
+@keyframes presence-pulse { 50% { opacity: 0.3; } }
+
+.markdown-document { max-width: var(--size-reading); min-height: 32rem; margin: var(--space-0) auto; padding: var(--space-7) var(--space-6) var(--space-9); font: 1.0625rem/var(--leading-reading) var(--font-serif); }
+.markdown-document h2 { margin: var(--space-0) var(--space-0) var(--space-6); font-size: 2.25rem; line-height: var(--leading-tight); }
+.markdown-document h3 { margin: var(--space-7) var(--space-0) var(--space-3); font-size: 1.5rem; line-height: 1.25; }
+.markdown-document h4 { margin: var(--space-6) var(--space-0) var(--space-2); font-size: 1.125rem; }
+.markdown-document p { margin: var(--space-0) var(--space-0) var(--space-4); }
+.markdown-document ul { margin: var(--space-0) var(--space-0) var(--space-5); padding-left: var(--space-5); }
+.markdown-document li { margin-bottom: var(--space-2); }
+.markdown-document blockquote { margin: var(--space-5) var(--space-0); padding: var(--space-3) var(--space-5); border-left: var(--border-accent) solid var(--color-action); color: var(--color-text-soft); background: var(--color-action-soft); }
+.markdown-document hr { height: var(--border-thin); margin: var(--space-8) var(--space-0); border: var(--space-0); background: var(--color-border); }
+.markdown-document a { color: var(--color-action); text-decoration-thickness: var(--border-thin); text-underline-offset: var(--space-1); }
+.markdown-document code { padding: var(--space-1) var(--space-2); border-radius: var(--radius-xs); background: var(--color-surface-subtle); font: 1em/1.4 ui-monospace, monospace; }
+.markdown-document .quote-pointer { display: block; margin-top: var(--space-2); padding: var(--space-0); border: var(--space-0); color: var(--color-action); background: transparent; font: 650 1rem/1.4 var(--font-sans); cursor: pointer; }
+.markdown-document .quote-pointer:hover { text-decoration: underline; }
+
+@media (max-width: 56rem) {
+  .site-header, main { padding-right: var(--space-5); padding-left: var(--space-5); }
+}
+
+@media (max-width: 38rem) {
+  .site-header { padding-right: var(--space-4); padding-left: var(--space-4); }
+  main { padding: var(--space-6) var(--space-4) var(--space-8); }
+}

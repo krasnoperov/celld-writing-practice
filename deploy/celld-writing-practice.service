@@ -1,0 +1,20 @@
+[Unit]
+Description=Writing Practice on celld
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+EnvironmentFile=/etc/celld-writing-practice/env
+ExecStart=/usr/local/bin/celld --bucket s3://writing-coach --endpoint http://127.0.0.1:9000 --listen 127.0.0.1:8931
+Environment=CELLD_WATCH=/var/lib/celld-writing-practice/watch
+StateDirectory=celld-writing-practice
+DynamicUser=yes
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

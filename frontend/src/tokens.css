@@ -1,0 +1,91 @@
+/* The single source of design tokens. This is the only file in the frontend
+   allowed to contain raw color values; components consume semantic tokens. */
+:root {
+  color-scheme: light;
+
+  --neutral-0: oklch(1 0 0);
+  --neutral-50: oklch(0.985 0.006 85);
+  --neutral-100: oklch(0.965 0.008 85);
+  --neutral-150: oklch(0.94 0.01 278);
+  --neutral-300: oklch(0.865 0.014 278);
+  --neutral-500: oklch(0.675 0.022 278);
+  --neutral-650: oklch(0.51 0.027 278);
+  --neutral-700: oklch(0.46 0.03 278);
+  --neutral-900: oklch(0.27 0.036 278);
+  --neutral-950: oklch(0.225 0.038 278);
+  --indigo-100: oklch(0.93 0.025 276);
+  --indigo-150: oklch(0.895 0.04 273);
+  --indigo-400: oklch(0.65 0.09 273);
+  --indigo-700: oklch(0.47 0.13 275);
+  --indigo-800: oklch(0.37 0.1 276);
+  --blue-100: oklch(0.91 0.035 260);
+  --cream-100: oklch(0.965 0.022 85);
+  --red-700: oklch(0.45 0.15 27);
+
+  --color-canvas: var(--neutral-100);
+  --color-surface: var(--neutral-50);
+  --color-surface-raised: var(--neutral-0);
+  --color-surface-subtle: var(--neutral-150);
+  --color-surface-note: var(--cream-100);
+  --color-text: var(--neutral-950);
+  --color-text-soft: var(--neutral-900);
+  --color-text-muted: var(--neutral-700);
+  --color-text-subtle: var(--neutral-650);
+  --color-border: var(--neutral-300);
+  --color-border-strong: var(--neutral-500);
+  --color-action: var(--indigo-700);
+  --color-action-hover: var(--indigo-800);
+  --color-action-soft: var(--indigo-100);
+  --color-action-border: var(--indigo-150);
+  --color-highlight: var(--blue-100);
+  --color-highlight-strong: var(--indigo-400);
+  --color-danger: var(--red-700);
+  --color-focus: var(--indigo-700);
+  --color-rule: oklch(0.78 0.015 278 / 0.42);
+  --color-shadow: oklch(0.25 0.025 278 / 0.09);
+  --color-shadow-soft: oklch(0.25 0.025 278 / 0.05);
+  --color-writer-selection: oklch(0.865 0.014 278 / 0.7);
+  --color-coach-selection: oklch(0.93 0.025 276 / 0.85);
+
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 5rem;
+  --space-10: 6rem;
+
+  --size-page: 90rem;
+  --size-content: 76rem;
+  --size-reading: 42rem;
+  --border-thin: 0.0625rem;
+  --border-accent: 0.1875rem;
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-pill: 999rem;
+  --radius-round: 50%;
+  --shadow-panel: 0 var(--space-5) var(--space-8) var(--color-shadow);
+  --shadow-soft: 0 var(--space-3) var(--space-6) var(--color-shadow-soft);
+  --line: 2.5rem;
+  /* Native faces only — each platform renders its own best serif and sans.
+     Type floor: no UI text below 1rem (16px); hierarchy comes from weight,
+     color, and family, never from shrinking. */
+  --font-serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Charter, Georgia, "Times New Roman", serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --leading-tight: 1.05;
+  --leading-body: 1.55;
+  --leading-reading: 1.75;
+
+  /* Motion: ink soaks in, it never bounces. Writer actions render in 0ms;
+     only the coach's ink is allowed duration. */
+  --ease-ink: cubic-bezier(0.25, 0, 0, 1);
+  --ink-arrive: 240ms;
+  --ink-settle: 200ms;
+  --ink-micro: 120ms;
+
+  font-family: var(--font-sans);
+}

@@ -1,0 +1,40 @@
+{
+  "name": "writing-practice-on-celld",
+  "version": "0.1.0",
+  "description": "A persistent agentic writing desk built on celld Durable Objects.",
+  "private": true,
+  "license": "UNLICENSED",
+  "author": "Aleksei Krasnoperov <aleksei@krasnoperov.me>",
+  "homepage": "https://writing.krasnoperov.me",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krasnoperov/celld-writing-practice.git"
+  },
+  "bugs": {
+    "url": "https://github.com/krasnoperov/celld-writing-practice/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "build": "vite build frontend",
+    "dev": "vite frontend",
+    "test": "node --test",
+    "test:coverage": "node --experimental-test-coverage --test",
+    "eval:live": "node evals/live-model.mjs",
+    "lint": "oxlint --deny-warnings src test scripts evals frontend/src frontend/vite.config.js frontend/svelte.config.js",
+    "check:css": "node scripts/check-css.mjs",
+    "check:voice": "node scripts/check-voice.mjs",
+    "check:syntax": "find src frontend evals scripts -type f \\( -name '*.js' -o -name '*.mjs' \\) -exec node --check {} +",
+    "check": "npm run lint && npm run check:syntax && npm run check:voice && npm run check:css && npm run build",
+    "predeploy": "npm test && npm run check",
+    "deploy": "celld deploy ."
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^7.2.0",
+    "oxlint": "^1.78.0",
+    "svelte": "^5.56.8",
+    "vite": "^8.2.1"
+  }
+}
