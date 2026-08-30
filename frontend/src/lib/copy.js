@@ -84,7 +84,7 @@ export const CARDS = {
 
 export const ASKBOX = {
   label: "Ask your coach",
-  placeholder: "Ask your coach about this piece…",
+  placeholder: "Ask about the piece, or the facts behind it…",
   send: "Ask",
   thinking: "Finding you an answer…",
   session: "One question uses one coach session.",

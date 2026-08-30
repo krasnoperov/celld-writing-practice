@@ -85,7 +85,7 @@
 </section>
 
 <style>
-  .desk { max-width: var(--size-content); margin: var(--space-0) auto; }
+  .desk { margin: var(--space-0) auto; }
   .desk-bar { display: flex; align-items: center; gap: var(--space-5); margin-bottom: var(--space-3); }
   /* The desk is a fixed surface: the page scrolls inside its own paper, the
      coach's column scrolls on its own. */

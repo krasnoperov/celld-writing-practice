@@ -12,7 +12,7 @@
   });
 </script>
 
-<div class="page-shell">
+<div class="page-shell" class:desk-shell={app.gate === "in" && app.view === "desk"}>
   {#if app.view !== "desk" || app.gate !== "in"}
     <Header />
   {/if}
@@ -32,5 +32,8 @@
 </div>
 
 <style>
-  .desk-main { padding-top: var(--space-4); }
+  /* The desk runs full-bleed: the shell's page cap and main's side padding
+     step aside, leaving a slim gutter so the panel's edge still breathes. */
+  .desk-shell { width: 100%; }
+  .desk-main { padding: var(--space-4) var(--space-4) var(--space-8); }
 </style>
