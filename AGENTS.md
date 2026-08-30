@@ -22,6 +22,12 @@ Never delete objects under `cells/` — not even ones that look orphaned.
 
 ## Deploying
 
+**The wrangler `name` must stay `"writing-coach"`.** celld namespaces every
+Durable Object cell by the script name; deploying under any other name detaches
+the app from all production state — every shelf and account comes up empty
+while the data sits untouched under the old namespace. This happened on
+2026-08-30 when the repo briefly deployed as `writing-practice`.
+
 1. `scripts/deploy-local.sh` — runs the backup, predeploy tests
    (`npm test && npm run check`), and `celld deploy`.
 2. `sudo systemctl restart celld-writing-coach` — nodes load a deployment
