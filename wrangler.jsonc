@@ -1,5 +1,8 @@
 {
-  "name": "writing-practice",
+  // "name" is the celld script identity that namespaces every Durable Object
+  // cell. Production data lives under "writing-coach" — deploying under any
+  // other name silently detaches the app from all existing state.
+  "name": "writing-coach",
   "main": "src/worker.js",
   "compatibility_date": "2026-08-06",
   "durable_objects": {
